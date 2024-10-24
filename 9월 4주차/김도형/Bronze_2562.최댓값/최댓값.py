@@ -7,3 +7,5 @@ max_num = max(lis)
 ans = lis.index(max_num) + 1
 print(max_num)
 print(ans)
+
+
