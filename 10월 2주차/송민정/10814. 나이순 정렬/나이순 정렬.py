@@ -9,3 +9,4 @@ members.sort(key=lambda x: (x[0], x[1]))
 
 for member in members:
     print(member[0], member[2])
+
