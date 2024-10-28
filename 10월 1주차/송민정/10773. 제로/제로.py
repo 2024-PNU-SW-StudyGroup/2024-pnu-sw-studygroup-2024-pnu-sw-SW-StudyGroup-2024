@@ -8,3 +8,5 @@ for i in range(k):
     stack.pop()
 
 print(sum(stack))
+
+
