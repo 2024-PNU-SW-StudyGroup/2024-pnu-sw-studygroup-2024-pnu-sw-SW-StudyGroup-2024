@@ -6,7 +6,18 @@
 
 ***
 * 김도형  
-
+## 1916 최소비용구하기
+    1. 다익스트라 알고리즘을 이용하여 최소비용을 구하는 문제이다.
+    2. 입력을 받고, 그래프를 만들어준다.
+    3. heapq를 이용하여 최소비용을 구한다.
+    4. costs 리스트에 최소비용을 저장하고, heap에 [0, start]를 넣어준다.
+    5. heap이 빌 때까지 반복하면서, cur_cost, cur_v를 pop한다.
+    6. costs[cur_v] < cur_cost이면 continue를 한다.
+    7. graph[cur_v]를 돌면서, next_v, next_cost를 가져온다.
+    8. sum_cost = cur_cost + next_cost를 계산해준다.
+    9. sum_cost >= costs[next_v]이면 continue를 한다.
+    10. costs[next_v] = sum_cost를 해주고, heapq.heappush(heap, [sum_cost, next_v])를 해준다.
+    11. costs[end]를 출력한다.
     
 * 김예준
 ## 1238. 파티
