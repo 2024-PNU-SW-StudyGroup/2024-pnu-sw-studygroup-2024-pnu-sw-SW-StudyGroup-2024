@@ -1,248 +1,200 @@
-# Template for Hackathon
-이 레파지토리는 참여자들이 해커톤 결과물을 위한 레파지토리 생성시에 참고할 내용들을 담고 있습니다.
-1. 레파지토리 생성
-2. 레파지토리 구성
-3. README.md 가이드라인
-4. README.md 작성팁
-<br/>
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/T3QcP9pQ)
 
 
-## 1. 레파지토리 생성
-- [https://classroom.github.com/a/T3QcP9pQ](https://classroom.github.com/a/T3QcP9pQ)
-- 위 Github Classroom 링크에 접속해 본인 조의 github 레파지토리를 생성하세요.
-  <img src="https://github.com/user-attachments/assets/aab768c0-7f1a-4919-99c1-5ead50c3c61d" width="600px" alt="classroom에서 팀 생성 그림" />
-- 레파지토리 생성 시 팀 이름은 `{조번호}` 형식으로 생성하세요.
-- 예를 들어, 3조의 팀명은 `03` 입니다.
-- 이 경우 `Group-03`이라는 이름으로 레포지토리가 생성됩니다.
-- 팀원의 경우 생성되어 있는 팀에 참가해주세요. <br/>
-  팀에 참가하지 않았을 경우, 레포지토리에 대한 권한이 없어 PR 및 commit이 막힐 수 있습니다.
-  <img width="600" alt="classroom에서 팀 참여 그림" src="https://github.com/user-attachments/assets/86f084f0-8623-40ed-b6d5-4e307ee8478b">
-<br/>
-
-
-## 2. 레파지토리 구성
-- 레파지토리 내에 `README.md` 파일 생성하고 아래의 가이드라인과 작성팁을 참고하여 파일을 작성하세요.
-- 레파지토리 내에 `docs` 폴더를 생성하고 폴더 내에는 과제 수행 하면서 작성한 각종 보고서, 발표자료를 올려둡니다.
-- 그 밖에 레파지토리의 폴더 구성은 과제 결과물에 따라 자유롭게 구성하되 가급적 코드의 목적이나 기능에 따라 폴더를 나누어 구성하세요.  
-<br/>
-
-
-## 3. README.md 가이드라인
+## README.md 가이드라인
 - README 파일 작성시에 아래의 5가지 항목의 내용은 필수적으로 포함해야 합니다.
 - 아래의 7가지 항목이외에 프로젝트의 이해를 돕기위한 내용을 추가해도 됩니다.
 - `SAMPLE_README.md`가 단순한 형태의 예제이니 참고하세요.
-```markdown
 ### 1. 프로젝트 소개
 #### 1.1. 개발배경 및 필요성
-> 프로젝트를 실행하게 된 배경 및 필요성을 작성하세요.
+AID(정보컴퓨터공학부 AI동아리) 내에서 `맥도날드 리뷰 데이터 별점 예측` 대회를 개최하였습니다. 맥도날드 매장에 대한 리뷰(영문) 데이터를 통해 학습된 모델이 리뷰 텍스트를 입력받으면 해당 리뷰의 별점은 몇점인지 예측하는 모델이 개발되었고, 개발된 모델을 시연해볼 수 있도록 웹서비스로 배포하는 것이 목적입니다. 해당 모델이 대회에서만 1회용으로 제작되는 것에 그치는 것이 아닌 누구나 시연해 볼 수 있는 환경이 필요하여 시작된 토이 프로젝트입니다.
 
 #### 1.2. 개발 목표 및 주요 내용
-> 프로젝트의 목표 및 주요 내용을 작성하세요.
+맥도날드 매장의 후기를 영어로 입력받으면 해당 후기를 남긴 유저의 별점을 예측하는 프로그램을 배포하는 일련의 과정을 스터디하고 경험하는 것을 목표로 하고 있습니다. 이번 토이 프로젝트를 통해 웹과 Pytorch 모델이 어떻게 결합될 수 있는지 스터디 해보고 차후에 AI 모델을 학습하고 python 환경에서 이용하는 것에서 벗어나 누구나 쉽게 모델을 이용해볼 수 있는 환경을 제작하는 능력을 갖추는 것이 목표입니다.
 
 #### 1.3. 세부내용
-> 위 내용을 작성하세요.
+- 프론트엔드: Next.JS를 활용한 프롬프트 시스템
+- 백엔드: Django + Pytorch로 AI 모델 API화, Django <-DB-> SQLite
+- AI: AI모델 튜닝 및 인스턴스화
+  - AI 모델을 위해 메모리, CPU 등의 하드웨어 성능이 뒷받침 되어야 할 것으로 보임.
+  - Pytorch 모델을 Django 앱과 비동기적으로 동작하도록 설계하는 것이 중요함.
 
-#### 1.4. 기존 서비스 대비 차별성
-> 위 내용을 작성하세요.
+#### 1.4. 주차 별 계획 및 진행사항
 
-#### 1.5. 사회적가치 도입 계획
-> 위 내용을 작성하세요.
+(2024-10-26 기준)
+[![TimeLine](./documents/README_img/timeline.png)](https://aeolian-arch-69e.notion.site/12b7102ef97780f287b4e18be2041cc1?v=3907530821de471d91c949cfe7f19a53)
 
+- **F**: Front-End
+- **B**: Back-End
+- **A**: AI & Pytorch
+
+| 주차 | 키워드 | 계획 | 진행 내역 |
+|:-------:|:-------:|:-------:|:-------:|
+| 1주차 | React | Web 기초 스터디 **F** <br> React 스터디 **F** | 1. [HTML, CSS, JS](./documents/week1/Web%20Basic.md) <br> 2. [React](https://www.notion.so/React-5d06778aa9b541d8ba95270fd4db5591) |
+| 2주차 | HTTP <br> Figma | HTTP 기반 API 스터디 **F,B,A** <br> Figma로 Wireframe 설계 **F** | 1. [HTTP 기반 API](https://www.notion.so/HTTP-API-64249f434f934fb3a7da7c9062b9fad3) <br> 2. [Figma Wireframe](./documents/week2/Figma%20Wireframe.md) |
+| 3주차 | Django <br> REST API | Django 기초 스터디 **B,A** <br> Django REST Framework 스터디 **B,A** | 1. [Django](./documents/week3/django/django%20basic.md) <br> 2-1. [Django ↔ React](./documents/week3/django-react%20연동/django-react%20연동.md)<br> 2-2. [django-rest-framework](./documents/week3/djangoRestFramework/djangoRESTframework.md) |
+| 4주차 | Pytorch <br> Next.js <br> DB | Pytorch 기초 스터디 **A** <br> Next.js로 UI 구축 -1- **F** <br> DB (PostgreSQL) 스터디 **B** | 1. [Pytorch Basic](./documents/week4/Pytorch%20Basic.md) <br> 2. [Next.js UI](./documents/week4/NextJS_Create_the_UI.md) <br>  3. [Databse](./documents/week4/DataBase.md) |
+| 5주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -1- **A** <br> Next.js로 UI 구축 -2- **F** <br> API 명세서 작성 및 DB ERD 작성 **B,A** | 1. [Pytorch 모델 가공](./documents/week5/Modularzation_ipynbToPy.md) <br> 2. [Next.js UI](./documents/week4/NextJS_Create_the_UI.md) <br> 3-0. [Django 환경 세팅](./documents/week5/Django_Install_and_Setting.md) <br> 3-1. [API 명세서 작성](./documents/week5/API_Document.md) |
+| 6주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -2- **A** <br> Next.js로 UX 구축 -1- **F** <br> REST API 구현 -1- **B** | 1. [Pytorch 모델 가공](./documents/week5/Modularzation_ipynbToPy.md) <br> 2. Next.js UX <br> 3. [REST API 구현 -1-](./documents/week6/RESTAPI_구현-1-.md) |
+| 7주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 API Serving **A** <br> Next.js로 UX 구축 -2- **F** <br> REST API 구현 -2- **B** | 1. [Torch 모델 API Serving](./ai-web-back/api/tasks.py) <br> 2. Next.js UX <br> 3. [REST API 구현 -2-](./documents/week7/RESTAPI_구현-2-.md) |
+| 8주차 | Pytorch <br> Next.js <br> Django, REST API | 통합 테스트 및 디버깅 -1- **F,B,A** | - |
+| 9주차 | Pytorch <br> Next.js <br> Django, REST API | 통합 테스트 및 디버깅 -2- **F,B,A** | - |
+| 10주차 | Docker | Docker로 인프라 구축하기 | 1. [Docker 설정하기](./documents/week10/docker.md) |
+| 11주차 | AWS | 서비스 배포 | 비용 문제로 인한 미진행 <br> 배포 예정 |
 
 ### 2. 상세설계
 #### 2.1. 시스템 구성도
-> 시스템 구성도(infra, front, back등의 node 간의 관계)의 사진을 삽입하세요.
+![System Diagram](/documents/README_img/System_Diagram.png)
 
-#### 2.1. 사용 기술
-> 스택 별(backend, frontend, designer등) 사용한 기술 및 버전을 작성하세요.
-> 
-> ex) React.Js - React14, Node.js - v20.0.2
+#### 2.2. 사용 기술
+
+- Frontend
+  ```text
+    Node.js v20.18.0
+
+    "dependencies": {
+      "react": "19.0.0-rc-69d4b800-20241021",
+      "react-dom": "19.0.0-rc-69d4b800-20241021",
+      "next": "15.0.1"
+    }
+  ```
+ 
+- Backend ([pip_requirements.txt](./ai-web-back/pip_requirements.txt))
+  ```text
+    Python 3.11.4
+
+    celery==5.4.0
+    Django==5.1
+    django-cors-headers==4.6.0
+    djangorestframework==3.15.2
+    gevent==24.11.1
+    lightning==2.4.0
+    redis==5.2.0
+    torch==2.5.1
+    transformers==4.46.3
+  ```
+
+- Infra
+  ```text
+  Docker
+  ```
 
 ### 3. 개발결과
 #### 3.1. 전체시스템 흐름도
-> 위 내용을 작성하세요.
+![FrontEnd Flow](./documents/week2/img/Figma_v2.png)
 
 #### 3.2. 기능설명
-> 각 페이지 마다 사용자의 입력의 종류와 입력에 따른 결과 설명 및 시연 영상.
-> 
-> ex. 로그인 페이지:
-> 
-> - 이메일 주소와 비밀번호를 입력하면 입력창에서 유효성 검사가 진행됩니다.
-> 
-> - 요효성 검사를 통과하지 못한 경우, 각 경고 문구가 입력창 하단에 표시됩니다.
->   
-> - 유효성 검사를 통과한 경우, 로그인 버튼이 활성화 됩니다.
->   
-> - 로그인 버튼을 클릭 시, 입력한 이메일 주소와 비밀번호에 대한 계정이 있는지 확인합니다.
->   
-> - 계정이 없는 경우, 경고문구가 나타납니다.
->
-> (영상)
+서비스는 단 하나의 페이지로 이루어져 있습니다.
+- 리뷰 입력하기
+  - 사용자는, 리뷰 입력 후 본인이 직접 남길 별점(AI가 맞춰야하는 별점)을 입력합니다.
+- AI 연산 기다리기
+  - AI의 연산이 완료될 때 까지 기다립니다.
+- AI가 예상한 별점 확인하기
+  - 사용자가 입력한 리뷰텍스트를 바탕으로 AI가 예측한 `사용자가 남길 별점`을 로드하여 확인합니다.
 
 #### 3.3. 기능명세서
-> 개발한 제품에 대한 기능명세서를 작성해 제출하세요.
-> 
-> 노션 링크, 한글 문서, pdf 파일, 구글 스프레드 시트 등...
+- Front End WireFrame: [Figma Link](https://www.figma.com/design/W0H8nZWsKPx3kqhnuEPOg0/AI-Web-Study?node-id=0-1&t=919RrO8ZHoLmXY23-1)
+- System Diagram: [Figma Link](https://www.figma.com/design/W0H8nZWsKPx3kqhnuEPOg0/AI-Web-Study?node-id=18-7&t=919RrO8ZHoLmXY23-1)
+- API Docs: [Notion Link](https://aeolian-arch-69e.notion.site/1317102ef97780119d9ccd079265e578?v=f37d9ae956b942a2b17f77175503c141)
+- ERD, 하나의 테이블로 이루어져 있어 이미지로 대체
+![Database ERD](./documents/README_img/ERD.png)
 
 #### 3.4. 디렉토리 구조
-> 위 레포지토리의 디렉토리 구조를 설명하세요.
+- Root (`GROUP-11`)
+```shell
+📁 ┬ 📁.github # Github 레포지토리 설정 관련 파일
+🔹 ├ 📁ai_web_front # FrontEnd를 담당하는 Next.js 폴더
+🔹 ├ 📁ai-web-back # BackEnd를 담당하는 Django 폴더
+🔹 ├ 📁documents # README.md와 연결된 각종 문서 파일
+🔹 ├ 📁notice # PNU 스터디 그룹 공지사항 파일 폴더
+🔹 ├ ⚙️.env # .gitignore로 인해 Push되지 않는 환경변수를 담은 파일
+🔹 │         # 프로젝트 실행을 위해 직접 생성해주어야함
+🔹 ├ ⚙️.gitignore # 레포지토리에 올리지 않을 파일 목록을 기재한 파일
+🔹 ├ 🐋compose.yaml # 빠른 실행 및 환경 구성을 위한 Docker-Compose 관련 파일
+🔹 └ 📜README.md # 지금 여러분이 보고 있는 Markdown 문서
+```
+
+- `ai_web_front`
+```shell
+📁 ┬ 📁app # Next.js에서 렌더링 및 라우팅할 React 파일이 담겨있는 폴더
+🔹 ├ 📁components # React 공용(자주사용되는) Component를 담은 폴더
+🔹 ├ 📁public # 이미지, 정적데이터와 같은 정적 파일들을 담은 폴더
+🔹 ├ 📁documents # README.md와 연결된 각종 문서 파일
+🔹 ├ 📁notice # PNU 스터디 그룹 공지사항 파일 폴더
+🔹 ├ ⚙️.gitignore # Next.js가 자동 생성한 Next.js의 .gitignore 목록
+🔹 ├ 🐋dockerfile # Docker 실행을 위해 Next.js 실행 명령어를 담은 파일
+🔹 ├ 🪛jsconfig.json # javascript 설정 파일
+🔹 ├ 🪛next.config.mjs # Next.js 설정 파일
+🔹 ├ 🪛package-lock.json # 패키지에 필요한 모듈 의존성을 담은 파일
+🔹 ├ 🪛package.json # 패키지에 필요한 구성요소를 담은 파일
+🔹 └ 📜README.md # Next.js가 자동생성한 README.md
+```
+
+- `ai-web-back`
+```shell
+📁 ┬ 📁api # API 기능을 담은 폴더. /api/** 로 라우팅 됨
+🔹 ├ 📁myapp # Django 기본 기능 및 Celery, django 설정을 담은 폴더
+🔹 ├ 🐋dockerfile # Docker 실행을 위해 Django와 Celery 실행 명령어를 담은 파일
+🔹 ├ 🪛manage.py # Django 실행을 위한 Django 메인 스크립트 파일
+🔹 └ 📜pip_requirements.txt # Django, Celery, Torch에 필요한 모듈 목록을 담은 문서
+```
 
 ### 4. 설치 및 사용 방법
-> 제품을 설치하기 위헤 필요한 소프트웨어 및 설치 방법을 작성하세요.
->
-> 제품을 설치하고 난 후, 실행 할 수 있는 방법을 작성하세요.
+#### 4.1. Docker를 이용한 실행 방법
+1. Docker Desktop 설치 및 실행 - [Windows Link](https://docs.docker.com/desktop/setup/install/windows-install/), [Mac Link](https://docs.docker.com/desktop/setup/install/mac-install/), [Linux Link](https://docs.docker.com/desktop/setup/install/linux/)
+2. Root (`GROUP-11`) 폴더에 `.env` 파일 생성 및 아래 내용 삽입
+```shell
+# Django 프로젝트 생성 시 발급된 KEY 삽입
+SECRET_KEY='django-insecure-YOUR_DJANGO_INSECURE'
 
-### 5. 소개 및 시연 영상
-> 프로젝트에 대한 소개와 시연 영상을 넣으세요.
-> 프로젝트 소개 동영상을 교육원 메일(swedu@pusan.ac.kr)로 제출 이후 센터에서 부여받은 youtube URL주소를 넣으세요.
+CORS_ORIGIN_WHITELIST_FROM='http://localhost:8080'
+CORS_ORIGIN_WHITELIST_TO='http://localhost:3000'
 
-### 6. 팀 소개
+DATABASES_ENGINE='django.db.backends.postgresql'
+DATABASES_NAME=aiweb
+DATABASES_USER=aiweb
+DATABASES_PASSWORD='YOUR POSTGRESQL PASSWORD'
+DATABASES_HOST=postgres
+# Docker를 이용하지 않고 Back-End 개별 실행시 아래 값 이용
+# DATABASES_HOST='YOUR DB HOST, 기본값: localhost'
+DATABASES_PORT=5432
+
+# 현재 Docker에 REDIS_USER를 설정하는 스크립트를 설정해놓지
+# 않아, 빈 스트링 이외의 값이 들어갈 시 에러 발생
+REDIS_USER=''
+REDIS_PASSWORD='YOUR REDIS PASSWORD'
+REDIS_URL=redis
+# Docker를 이용하지 않고 Back-End 개별 실행시 아래 값 이용
+# REDIS_URL='YOUR REDIS HOST, 기본값: localhost'
+```
+3. Terminal을 이용하여 Root 폴더(`Group-11`)에서 아래 명령어 실행, 첫 실행시 완료까지 수분 소요
+```shell
+docker-compose up --build -d
+```
+4. Docker에서 `backend-django` 컨네이너의 로그 확인, 아래 로그가 출력되면 컨테이너 실행 완료.
+![Docker Log](./documents/README_img/Docker-log.png)
+- Torch에 대한 경고문이 출력되나, 정상적으로 실행됨을 확인하였습니다.
+5. 웹브라우저를 이용하여 `http://localhost:3000`으로 접속
+
+#### 4.2. Docker를 이용하지 않고 각 Domain 개별 실행
+각 영역별 문서 참고
+- Front-End
+  - [Front-End 실행](./documents/week4/NextJS_Install_and_Setting.md)
+- Back-End with Torch
+  - [Back-End 실행 -1-](./documents/week5/Django_Install_and_Setting.md)
+  - [Back-End 실행 -2-](./documents/week6/RESTAPI_구현-1-.md)
+
+### 5. 팀 소개
 > 팀원 소개 & 구성원 별 역할 분담 & 간단한 연락처를 작성하세요.
+#### 🍱 배고픈사람들
+| 이동훈 | 조현성 | 안소희 |
+|:-------:|:-------:|:-------:|
+|<a href="https://github.com/bluelemon61"><img width="100px" alt="이동훈" src="https://avatars.githubusercontent.com/u/67902252?v=4" /></a> | <a href="https://github.com/hyunsung1221"><img width="100px" alt="조현성" src="https://avatars.githubusercontent.com/u/138447029?v=4" /></a> | <a href="https://github.com/soheean1370"><img width="100px" alt="안소희" src="https://avatars.githubusercontent.com/u/127065983?v=4" /></a> |
+| therqq13@pusan.ac.kr | sungsam3312@pusan.ac.kr | soheean1370@pusan.ac.kr |
+| 총괄 <br/> 인프라 구축 | Pytorch 개발 | Pytorch 개발 |
 
-### 7. 해커톤 참여 후기
-> 팀원 별 해커톤 참여 후기를 작성하세요.
-```
-<br/>
-
-
-## 4. README.md 작성 팁
-- 마크다운 언어를 이용해 README.md 파일을 작성할 때 참고할 수 있는 마크다운 언어 문법을 공유합니다.
-- 다양한 예제와 보다 자세한 문법은 [이 문서](https://www.markdownguide.org/basic-syntax/)를 참고하세요.
-
-### 4.1. 헤더 Header
-```
-# This is a Header 1
-## This is a Header 2
-### This is a Header 3
-#### This is a Header 4
-##### This is a Header 5
-###### This is a Header 6
-####### This is a Header 7 은 지원되지 않습니다.
-```
-
-# This is a Header 1
-## This is a Header 2
-### This is a Header 3
-#### This is a Header 4
-##### This is a Header 5
-###### This is a Header 6
-####### This is a Header 7 은 지원되지 않습니다.
-<br />
-
-### 4.2. 인용문 BlockQuote
-```
-> This is a first blockqute.
->	> This is a second blockqute.
->	>	> This is a third blockqute.
-```
-> This is a first blockqute.
->	> This is a second blockqute.
->	>	> This is a third blockqute.
-<br />
-
-### 4.3. 목록 List
-* **Ordered List**
-```
-1. first
-2. second
-3. third  
-```
-1. first
-2. second
-3. third
-<br />
-
-* **Unordered List**
-```
-* 하나
-  * 둘
-
-+ 하나
-  + 둘
-
-- 하나
-  - 둘
-```
-* 하나
-  * 둘
-
-+ 하나
-  + 둘
-
-- 하나
-  - 둘
-<br />
-
-### 4.4. 코드 CodeBlock
-* 코드 블럭 이용 '``'
-```
-여러줄 주석 "```" 이용
-"```
-#include <stdio.h>
-int main(void){
-  printf("Hello world!");
-  return 0;
-}
-```"
-
-단어 주석 "`" 이용
-"`Hello world`"
-
-* 큰 따움표(") 없이 사용하세요.
-``` 
-<br />
-
-### 4.5. 링크 Link
-```
-[Title](link)
-[부산대 소프트웨어융합교육원](https://swedu.pusan.ac.kr/swedu/index.do)
-
-<link>
-<https://swedu.pusan.ac.kr>
-``` 
-[부산대 소프트웨어융합교육원](https://swedu.pusan.ac.kr)
-
-<https://swedu.pusan.ac.kr>  
-<br />
-
-### 4.6. 강조 Highlighting
-```
-*single asterisks*
-_single underscores_
-**double asterisks**
-__double underscores__
-~~cancelline~~
-```
-*single asterisks* <br />
-_single underscores_ <br />
-**double asterisks** <br />
-__double underscores__ <br />
-~~cancelline~~  <br />
-<br />
-
-### 4.7. 이미지 Image
-```
-<img src="/path/to/img.jpg" width="600px" title="Title" alt="Alt text"></img>
-![Alt text](/path/to/img.jpg "Optional title")
-```
-<img src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/be7beb64-490f-4480-b121-f25cde7f2a8d" width="600px" title="부산대학교 소프트웨어융합교육원" alt="부산대학교 소프트웨어융합교육원"></img>
-<br/>
-![부산대학교 소프트웨어융합교육원](https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/884154bb-28f6-4498-9f64-a8a878972951, "부산대학교 소프트웨어융합교육원")
-<br/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+| 박준혁 | 박상훈 |곽도연 |
+|:-------:|:-------:|:-------:|
+|<a href="https://github.com/JakeFRCSE"><img width="100px" alt="박준혁" src="https://avatars.githubusercontent.com/u/162955476?v=4" /></a> | <a href="https://github.com/sanghunii"><img width="100px" alt="박상훈" src="https://avatars.githubusercontent.com/u/152972679?v=4" /></a>| <a href="https://github.com/Karryun"><img width="100px" alt="곽도연" src="https://avatars.githubusercontent.com/u/165464282?v=4" /></a> |
+| eppi001004@gmail.com | sanghoon556@pusan.ac.kr |gdy0210@pusan.ac.kr |
+| 백엔드 개발 | 백엔드 개발 | 프론트엔드 개발 |
