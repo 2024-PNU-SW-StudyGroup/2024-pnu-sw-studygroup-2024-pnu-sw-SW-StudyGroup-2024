@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Namu"
 include(":app")
+include(":app")
  

@@ -22,10 +22,15 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -79,13 +84,31 @@ fun HomeScreen(navController: NavController) {
 
         },
 
-        content = { paddingValues ->
-            Box(modifier = Modifier.padding(paddingValues)) {
-                // 메인 콘텐츠
-                HomeContent()
+        // 장바구니 플로팅 버튼
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    // 장바구니 페이지로 이동
+                    navController.navigate("cart")
+                },
+                containerColor = Color.White,
+                contentColor = Color.Black
+
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.ShoppingCart,
+                    contentDescription = "장바구니",
+                    Modifier.size(32.dp)
+                )
             }
+        },
+        floatingActionButtonPosition = FabPosition.End
+    ){ paddingValues ->
+        // 메인 콘텐츠
+        Box(modifier = Modifier.padding(paddingValues)) {
+            HomeContent()
         }
-    )
+    }
 }
 
 @Composable
