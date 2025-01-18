@@ -1,4 +1,4 @@
-package com.project.namu.page
+package com.project.namu.ui.page
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -47,11 +47,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.project.namu.tools.PagerWithDotsIndicator
+import com.project.namu.ui.tools.PagerWithDotsIndicator
 import com.project.namu.ui.theme.BackGround
 import com.project.namu.ui.theme.Ui_empty
 import com.project.namu.R
-import com.project.namu.component.Store_SwitchBottomBar
+import com.project.namu.ui.component.Store_SwitchBottomBar
 
 
 @Composable

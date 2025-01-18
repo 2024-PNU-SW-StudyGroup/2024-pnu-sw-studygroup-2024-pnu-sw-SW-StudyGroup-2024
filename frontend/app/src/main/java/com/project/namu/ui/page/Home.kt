@@ -1,4 +1,4 @@
-package com.project.namu.page
+package com.project.namu.ui.page
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,7 +22,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material3.Card
@@ -30,7 +29,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -50,9 +48,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.project.namu.R
-import com.project.namu.component.BottomNav
-import com.project.namu.component.SearchTopBar
-import com.project.namu.tools.PagerWithDotsIndicator
+import com.project.namu.ui.component.BottomNav
+import com.project.namu.ui.component.SearchTopBar
+import com.project.namu.ui.tools.PagerWithDotsIndicator
 import com.project.namu.ui.theme.BackGround
 import com.project.namu.ui.theme.Main100
 import com.project.namu.ui.theme.Main200

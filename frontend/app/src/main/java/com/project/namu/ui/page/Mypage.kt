@@ -1,9 +1,9 @@
-package com.project.namu.page
+package com.project.namu.ui.page
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 
 @Composable
-fun LoginScreen(navController: NavController) {
+fun MypageScreen(navController: NavController) {
 
 }

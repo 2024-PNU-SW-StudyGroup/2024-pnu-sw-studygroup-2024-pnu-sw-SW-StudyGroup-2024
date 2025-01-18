@@ -1,4 +1,4 @@
-package com.project.namu.page
+package com.project.namu.ui.page
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,18 +31,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.project.namu.R
-import com.project.namu.component.Menu_BottomBar
-import com.project.namu.component.Store_SwitchBottomBar
-import com.project.namu.tools.PagerWithDotsIndicator
+import com.project.namu.ui.component.Menu_BottomBar
 import com.project.namu.ui.theme.Main100
-import com.project.namu.ui.theme.Main200
 import com.project.namu.ui.theme.Ui_empty
 
 

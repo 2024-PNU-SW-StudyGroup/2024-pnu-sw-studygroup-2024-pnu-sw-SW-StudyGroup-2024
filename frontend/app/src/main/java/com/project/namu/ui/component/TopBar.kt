@@ -1,4 +1,4 @@
-package com.project.namu.component
+package com.project.namu.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*

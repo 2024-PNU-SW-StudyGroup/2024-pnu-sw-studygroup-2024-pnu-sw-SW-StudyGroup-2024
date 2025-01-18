@@ -1,6 +1,5 @@
-package com.project.namu.page
+package com.project.namu.ui.page
 
-import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -28,6 +27,7 @@ import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -47,9 +47,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.project.namu.R
-import com.project.namu.component.BottomNav
-import com.project.namu.component.SearchTopBar
+import com.project.namu.data.model.StoreData
+import com.project.namu.ui.component.BottomNav
+import com.project.namu.ui.component.SearchTopBar
 import com.project.namu.ui.theme.BackGround
+import com.project.namu.ui.viewmodel.StoreUiState
+import com.project.namu.ui.viewmodel.StoreViewModel
 
 @Composable
 fun Search_listScreen(navController: NavController) {
@@ -87,27 +90,40 @@ fun Search_listScreen(navController: NavController) {
 }
 
 @Composable
-fun Search_listContent() {
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = BackGround)
-            .padding(horizontal = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+fun Search_listContent(viewModel: StoreViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
+    val uiState by viewModel.uiState
 
-    ){
-        item { Spacer(modifier = Modifier.height(4.dp)) }
+    when (uiState) {
+        is StoreUiState.Loading -> {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
+        }
 
-        item { CafeCardWithDetails() }
+        is StoreUiState.Success -> {
+            val stores = (uiState as StoreUiState.Success).data
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(color = BackGround)
+                    .padding(horizontal = 20.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                items(stores.size) { index ->
+                    StoreCardWithDetails(storeData = stores[index])
+                }
+            }
+        }
 
-        item { CafeCardWithDetails() }
-
-        item { CafeCardWithDetails() }
-
-        item { CafeCardWithDetails() }
-
+        is StoreUiState.Error -> {
+            val message = (uiState as StoreUiState.Error).message
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Text(text = message, color = Color.Red)
+            }
+        }
     }
 }
+
 
 @Composable
 fun FilterButtonRow() {
@@ -193,30 +209,27 @@ fun FilterButton(image: Int, text: String) {
 }
 
 @Composable
-fun CafeCardWithDetails() {
-    var isFavorite by remember { mutableStateOf(false) } // 좋아요 상태
+fun StoreCardWithDetails(storeData: StoreData) {
+    var isFavorite by remember { mutableStateOf(false) }
 
     Card(
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         modifier = Modifier
             .fillMaxWidth()
-            .height(180.dp) // 기본 높이 설정
-            .clickable {
-
-            }
+            .height(180.dp)
+            .clickable { }
     ) {
         Row(
             modifier = Modifier.fillMaxSize()
         ) {
-            // 왼쪽 이미지 섹션
+            // 왼쪽 이미지 영역 (임시 회색 배경)
             Box(
                 modifier = Modifier
                     .width(120.dp)
                     .fillMaxHeight()
                     .background(Color.Gray)
             ) {
-                // 좋아요 아이콘을 오른쪽 상단에 배치
                 Icon(
                     imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                     contentDescription = "Like",
@@ -228,7 +241,7 @@ fun CafeCardWithDetails() {
                 )
             }
 
-            // 오른쪽 텍스트 섹션
+            // 오른쪽 상세 정보
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -236,7 +249,7 @@ fun CafeCardWithDetails() {
             ) {
                 // 가게 이름
                 Text(
-                    text = "카페인중독 부산대점",
+                    text = storeData.storeName,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black
@@ -244,18 +257,18 @@ fun CafeCardWithDetails() {
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                // 메뉴 정보
+                // 세트 메뉴 정보
                 Text(
-                    text = "세트A (와플, 샌드위치)\n세트B (샌드위치, 휘낭시에)…",
+                    text = storeData.setNames.joinToString("\n") { "${it.setName} (${it.menuNames})" },
                     fontSize = 12.sp,
                     color = Color.Gray
                 )
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                // 가격 정보
+                // 최소 가격
                 Text(
-                    text = "₩ 5,000 ~",
+                    text = "₩ ${storeData.minPrice}",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black
@@ -263,56 +276,29 @@ fun CafeCardWithDetails() {
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                // 평점, 시간, 거리 정보
-                Column(
-                    modifier = Modifier.fillMaxWidth()
-                ){
-                    // 평점 정보
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(
-                            imageVector = Icons.Default.Star,
-                            contentDescription = "Rating",
-                            tint = Color(0xFFFFD607),
-                            modifier = Modifier.size(16.dp)
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(text = "4.5 (100+)", fontSize = 12.sp, color = Color.Black)
-                    }
+                // 평점, 픽업 시간, 거리 정보
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(Icons.Default.Star, contentDescription = "Rating", tint = Color(0xFFFFD607), modifier = Modifier.size(16.dp))
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(text = "${storeData.storeRating} (${storeData.reviewCount}+)")
 
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
 
-                    Row() {
-                        // 시간 정보
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.card_clock),
-                                contentDescription = "Time",
-                                tint = Color(0xFF00BCD4),
-                                modifier = Modifier.size(16.dp)
-                            )
-                            Spacer(modifier = Modifier.width(4.dp))
-                            Text(text = "19:00 ~ 21:00", fontSize = 12.sp, color = Color.Gray)
-                        }
+                    Icon(painter = painterResource(id = R.drawable.card_clock), contentDescription = "Time", tint = Color(0xFF00BCD4), modifier = Modifier.size(16.dp))
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(text = storeData.pickupTimes)
 
-                        Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
 
-                        // 거리 정보
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.card_location),
-                                contentDescription = "Location",
-                                tint = Color(0xFF00BCD4),
-                                modifier = Modifier.size(16.dp)
-                            )
-                            Spacer(modifier = Modifier.width(4.dp))
-                            Text(text = "1.9km", fontSize = 12.sp, color = Color.Gray)
-                        }
-                    }
+                    Icon(painter = painterResource(id = R.drawable.card_location), contentDescription = "Location", tint = Color(0xFF00BCD4), modifier = Modifier.size(16.dp))
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(text = "${storeData.location / 1000.0} km")
                 }
             }
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
