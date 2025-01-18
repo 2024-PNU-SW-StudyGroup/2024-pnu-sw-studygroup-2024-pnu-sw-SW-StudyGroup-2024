@@ -32,8 +32,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Divider
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
@@ -68,7 +72,7 @@ fun BottomNav(
         ) {
             Spacer(modifier = Modifier.weight(1f))
             BottomIcon(
-                icon = Icons.Default.Home,
+                icon = Icons.Outlined.Home,
                 text = "홈",
                 selected = selectedIndex == 0,
                 action = {
@@ -81,7 +85,7 @@ fun BottomNav(
             )
             Spacer(modifier = Modifier.weight(1f))
             BottomIcon(
-                icon = Icons.Default.Favorite,
+                icon = Icons.Default.FavoriteBorder,
                 text = "찜한목록",
                 selected = selectedIndex == 1,
                 action = {
@@ -94,7 +98,7 @@ fun BottomNav(
             )
             Spacer(modifier = Modifier.weight(1f))
             BottomIcon(
-                icon = Icons.Default.Person,
+                icon = Icons.Outlined.Person,
                 text = "마이페이지",
                 selected = selectedIndex == 2,
                 action = {
@@ -263,7 +267,7 @@ fun Menu_BottomBar(){
 fun BottomBarPreview() {
     val navController = rememberNavController()
 
-    BottomNav(navController = navController, selectedIndex = 0) {
+    BottomNav(navController = navController, selectedIndex = 1) {
 
     }
 }

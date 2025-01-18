@@ -50,6 +50,19 @@ android {
 }
 
 dependencies {
+    // Compose ViewModel
+    implementation(libs.lifecycle.viewmodel.compose)
+
+    // Network calls
+    implementation(libs.retrofit2)
+
+    // JSON 변환
+    implementation(libs.retrofit2.converter.gson)
+
+    // Image loading
+    implementation(libs.coil.compose)
+
+    implementation(libs.coroutines.android)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
