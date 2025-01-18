@@ -106,7 +106,8 @@ fun Search_listContent(viewModel: StoreViewModel = androidx.lifecycle.viewmodel.
                 modifier = Modifier
                     .fillMaxSize()
                     .background(color = BackGround)
-                    .padding(horizontal = 20.dp),
+                    .padding(horizontal = 20.dp)
+                    .padding(vertical = 20.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 items(stores.size) { index ->
@@ -250,7 +251,7 @@ fun StoreCardWithDetails(storeData: StoreData) {
                 // 가게 이름
                 Text(
                     text = storeData.storeName,
-                    fontSize = 16.sp,
+                    fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black
                 )
@@ -260,7 +261,7 @@ fun StoreCardWithDetails(storeData: StoreData) {
                 // 세트 메뉴 정보
                 Text(
                     text = storeData.setNames.joinToString("\n") { "${it.setName} (${it.menuNames})" },
-                    fontSize = 12.sp,
+                    fontSize = 14.sp,
                     color = Color.Gray
                 )
 
@@ -268,7 +269,7 @@ fun StoreCardWithDetails(storeData: StoreData) {
 
                 // 최소 가격
                 Text(
-                    text = "₩ ${storeData.minPrice}",
+                    text = "₩ ${storeData.minPrice} ~",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black
@@ -277,22 +278,43 @@ fun StoreCardWithDetails(storeData: StoreData) {
                 Spacer(modifier = Modifier.height(4.dp))
 
                 // 평점, 픽업 시간, 거리 정보
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(Icons.Default.Star, contentDescription = "Rating", tint = Color(0xFFFFD607), modifier = Modifier.size(16.dp))
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text(text = "${storeData.storeRating} (${storeData.reviewCount}+)")
+                Column() {
+                    Row( verticalAlignment = Alignment.CenterVertically ) {
+                        Icon(
+                            Icons.Default.Star,
+                            contentDescription = "Rating",
+                            tint = Color(0xFFFFD607),
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(text = "${storeData.storeRating} (${storeData.reviewCount}+)")
 
-                    Spacer(modifier = Modifier.width(8.dp))
+                        Spacer(modifier = Modifier.width(8.dp))
+                    }
 
-                    Icon(painter = painterResource(id = R.drawable.card_clock), contentDescription = "Time", tint = Color(0xFF00BCD4), modifier = Modifier.size(16.dp))
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text(text = storeData.pickupTimes)
+                    Spacer(modifier = Modifier.height(4.dp))
 
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Row( verticalAlignment = Alignment.CenterVertically ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.card_clock),
+                            contentDescription = "Time",
+                            tint = Color(0xFF00BCD4),
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(text = storeData.pickupTimes)
 
-                    Icon(painter = painterResource(id = R.drawable.card_location), contentDescription = "Location", tint = Color(0xFF00BCD4), modifier = Modifier.size(16.dp))
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text(text = "${storeData.location / 1000.0} km")
+                        Spacer(modifier = Modifier.width(8.dp))
+
+                        Icon(
+                            painter = painterResource(id = R.drawable.card_location),
+                            contentDescription = "Location",
+                            tint = Color(0xFF00BCD4),
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(text = "${storeData.location / 1000.0} km")
+                    }
                 }
             }
         }

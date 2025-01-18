@@ -173,7 +173,7 @@ fun Store_AvailableBottomBar() {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "총 7,070원 - 장바구니 보기",
+            text = "총 0원 - 장바구니 보기",
             color = Color.White,
             fontSize = 16.sp,
             fontWeight = FontWeight.Bold
