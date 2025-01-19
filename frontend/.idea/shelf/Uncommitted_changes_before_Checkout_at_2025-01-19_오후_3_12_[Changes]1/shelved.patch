@@ -1,0 +1,12 @@
+Index: app/src/main/java/com/project/namu/ui/page/BookMark.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/project/namu/ui/page/BookMark.kt b/app/src/main/java/com/project/namu/ui/page/BookMark.kt
+new file mode 100644
+--- /dev/null	
++++ b/app/src/main/java/com/project/namu/ui/page/BookMark.kt	
+@@ -0,0 +1,2 @@
++package com.project.namu.ui.page
++

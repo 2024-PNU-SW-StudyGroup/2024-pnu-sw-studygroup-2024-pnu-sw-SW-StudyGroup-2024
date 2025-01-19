@@ -1,0 +1,17 @@
+Index: app/src/main/java/com/project/namu/ui/viewmodel/StoreViewModel.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.project.namu.ui.viewmodel\r\n\r\nimport androidx.lifecycle.ViewModel\r\nimport androidx.lifecycle.viewModelScope\r\nimport com.project.namu.data.model.StoreData\r\nimport com.project.namu.data.repository.StoreRepository\r\nimport com.project.namu.data.remote.RetrofitInstance\r\nimport kotlinx.coroutines.launch\r\nimport androidx.compose.runtime.mutableStateOf\r\nimport androidx.compose.runtime.State\r\n\r\nsealed class StoreUiState {\r\n    object Loading : StoreUiState()\r\n    data class Success(val data: List<StoreData>) : StoreUiState()\r\n    data class Error(val message: String) : StoreUiState()\r\n}\r\n\r\nclass StoreViewModel : ViewModel() {\r\n\r\n    private val repository = StoreRepository(RetrofitInstance.apiService)\r\n\r\n    private val _uiState = mutableStateOf<StoreUiState>(StoreUiState.Loading)\r\n    val uiState: State<StoreUiState> get() = _uiState\r\n\r\n    init {\r\n        fetchStores()\r\n    }\r\n\r\n    private fun fetchStores() {\r\n        viewModelScope.launch {\r\n            try {\r\n                val response = repository.getStoreList()\r\n                if (response.isSuccessful) {\r\n                    // response.body()가 곧 List<StoreData>이므로, null 처리\r\n                    val storeList = response.body() ?: emptyList()\r\n                    _uiState.value = StoreUiState.Success(storeList)\r\n                } else {\r\n                    _uiState.value = StoreUiState.Error(\"서버 오류: ${response.code()}\")\r\n                }\r\n            } catch (e: Exception) {\r\n                _uiState.value = StoreUiState.Error(\"네트워크 오류: ${e.localizedMessage}\")\r\n            }\r\n        }\r\n    }\r\n}
+===================================================================
+diff --git a/app/src/main/java/com/project/namu/ui/viewmodel/StoreViewModel.kt b/app/src/main/java/com/project/namu/ui/viewmodel/StoreViewModel.kt
+--- a/app/src/main/java/com/project/namu/ui/viewmodel/StoreViewModel.kt	
++++ b/app/src/main/java/com/project/namu/ui/viewmodel/StoreViewModel.kt	
+@@ -32,7 +32,7 @@
+                 val response = repository.getStoreList()
+                 if (response.isSuccessful) {
+                     // response.body()가 곧 List<StoreData>이므로, null 처리
+-                    val storeList = response.body() ?: emptyList()
++                    val storeList = response.body()
+                     _uiState.value = StoreUiState.Success(storeList)
+                 } else {
+                     _uiState.value = StoreUiState.Error("서버 오류: ${response.code()}")
