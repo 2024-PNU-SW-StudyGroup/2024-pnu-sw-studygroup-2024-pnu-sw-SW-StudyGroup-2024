@@ -84,14 +84,17 @@ fun Search_listScreen(navController: NavController) {
         content = { paddingValues ->
             Box(modifier = Modifier.padding(paddingValues)) {
                 // 메인 콘텐츠
-                Search_listContent()
+                Search_listContent(navController = navController)
             }
         }
     )
 }
 
 @Composable
-fun Search_listContent(viewModel: StoreViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
+fun Search_listContent(
+    navController: NavController, // ← NavController를 인자로 받아서
+    viewModel: StoreViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+) {
     val uiState by viewModel.uiState
 
     when (uiState) {
@@ -112,7 +115,7 @@ fun Search_listContent(viewModel: StoreViewModel = androidx.lifecycle.viewmodel.
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 items(stores.size) { index ->
-                    StoreCardWithDetails(storeData = stores[index])
+                    StoreCardWithDetails(storeData = stores[index], navController = navController)
                 }
             }
         }
@@ -211,7 +214,7 @@ fun FilterButton(image: Int, text: String) {
 }
 
 @Composable
-fun StoreCardWithDetails(storeData: StoreData) {
+fun StoreCardWithDetails(storeData: StoreData, navController: NavController) {
     var isFavorite by remember { mutableStateOf(false) }
 
     Log.d("DEBUG", "setNames: ${storeData.setNames}")
@@ -222,7 +225,11 @@ fun StoreCardWithDetails(storeData: StoreData) {
         modifier = Modifier
             .fillMaxWidth()
             .height(180.dp)
-            .clickable { }
+            .clickable {
+                Log.d("DEBUG", "Clicked storeId = ${storeData.storeId}")
+
+                navController.navigate("가게상세/${storeData.storeId}")
+            }
     ) {
         Row(
             modifier = Modifier.fillMaxSize()
