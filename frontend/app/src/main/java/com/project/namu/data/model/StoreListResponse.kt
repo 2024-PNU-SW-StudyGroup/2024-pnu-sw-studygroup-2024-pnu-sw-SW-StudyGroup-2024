@@ -19,5 +19,6 @@ data class StoreData(
 
 data class SetInfo(
     @SerializedName("setName") val setName: String,
-    @SerializedName("menuNames") val menuNames: String
+    @SerializedName("menuNames") val menuNames: String = ""
 )
+

@@ -3,6 +3,8 @@
     <domain-config cleartextTrafficPermitted="true">
         <!-- 로컬 서버(에뮬레이터) 접근 허용 -->
         <domain includeSubdomains="true">10.0.2.2</domain>
+        <!-- 배포된 서버 -->
+        <domain includeSubdomains="true">apptive-namu.ap-northeast-2.elasticbeanstalk.com</domain>
 
     </domain-config>
 </network-security-config>

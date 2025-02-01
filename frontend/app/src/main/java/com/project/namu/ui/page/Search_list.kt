@@ -1,5 +1,6 @@
 package com.project.namu.ui.page
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -213,6 +214,8 @@ fun FilterButton(image: Int, text: String) {
 fun StoreCardWithDetails(storeData: StoreData) {
     var isFavorite by remember { mutableStateOf(false) }
 
+    Log.d("DEBUG", "setNames: ${storeData.setNames}")
+
     Card(
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
@@ -227,8 +230,8 @@ fun StoreCardWithDetails(storeData: StoreData) {
             // 왼쪽 이미지 영역 (임시 회색 배경)
             Box(
                 modifier = Modifier
-                    .width(120.dp)
                     .fillMaxHeight()
+                    .fillMaxWidth(1 / 3f) // 카드의 1/3 크기
                     .background(Color.Gray)
             ) {
                 Icon(
@@ -257,6 +260,8 @@ fun StoreCardWithDetails(storeData: StoreData) {
                 )
 
                 Spacer(modifier = Modifier.height(4.dp))
+
+                Log.d("DEBUG", "Menu Text: ${storeData.setNames.joinToString("\n") { "${it.setName} (${it.menuNames})" }}")
 
                 // 세트 메뉴 정보
                 Text(
